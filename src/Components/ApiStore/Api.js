@@ -1,0 +1,1 @@
+export var FooterImage = 'https://localhost:44341/api/Contents'

@@ -1,0 +1,101 @@
+/* Footer container */
+.kf-footer {
+    padding: 70px 0 0 0;
+    background: #0e1317; /* or #000 for pure black */
+    color: #fff;
+}
+
+/* Logo section */
+.kf-footer .kf-logo {
+    visibility: visible;
+}
+.BackGround-Color{
+    color: #b99272;
+}
+/* Business hours section */
+.kf-footer .kf-f-hours {
+    visibility: visible;
+}
+
+.kf-footer .kf-f-hours h5,
+.kf-footer .kf-f-hours ul,
+.kf-footer .kf-f-hours li {
+    color: #fff;
+}
+
+.kf-footer .kf-f-hours ul li em {
+    display: block;
+    color: #b99272;
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* Contact section */
+.kf-footer .kf-f-contact {
+    visibility: visible;
+}
+
+.kf-footer .kf-f-contact h5,
+.kf-footer .kf-f-contact ul,
+.kf-footer .kf-f-contact li {
+    color: #fff;
+}
+
+.kf-footer .kf-f-contact ul li em {
+    display: block;
+    color: #b99272;
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* Gallery section */
+.kf-footer .kf-f-gallery {
+    visibility: visible;
+}
+
+.kf-footer .kf-f-gallery h5,
+.kf-footer .kf-f-gallery ul,
+.kf-footer .kf-f-gallery li {
+    color: #fff;
+}
+
+/* Image links in gallery */
+.kf-footer .kf-f-gallery ul li a {
+    display: block;
+    color: #fff;
+}
+
+.kf-footer .kf-f-gallery ul li img {
+    max-width: 100%;
+    height: auto;
+    transition: transform .3s, filter 1s ease-in-out;
+    filter: grayscale(100%);
+}
+.kf-footer .kf-f-gallery ul li img:hover {
+    max-width: 100%;
+    height: auto;
+    transform: scale(1);
+    filter: grayscale(0); 
+}
+
+/* Copyright section */
+.kf-footer .kf-copyright {
+    visibility: visible;
+    text-align: center;
+    color: #fff;
+}
+
+.kf-footer .kf-copyright a {
+    color: green;
+    text-decoration: none;
+}
+.kf-footer .kf-copyright a:hover {
+    color: #b99272;
+    text-decoration: none;
+}
+
+/* General styles */
+* {
+    box-sizing: border-box;
+}
+
