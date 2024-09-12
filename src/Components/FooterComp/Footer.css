@@ -4,7 +4,10 @@
     background: #0e1317; /* or #000 for pure black */
     color: #fff;
 }
-
+.icon-color{
+color: #b99272;
+font-size: x-large;
+}
 /* Logo section */
 .kf-footer .kf-logo {
     visibility: visible;

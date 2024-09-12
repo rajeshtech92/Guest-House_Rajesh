@@ -14,17 +14,21 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link as RouterLink } from "react-router-dom"; // Updated to use RouterLink
 import { Route, Routes, useNavigate } from "react-router-dom";
 import logo from '../ImageCom/logo.png';
-import ImagesMapping from '../HomeBannerSectionComp/ImagesMapping';
+import ImagesMapping from '../HomePageComp/ImagesMapping';
 import Footer from '../FooterComp/Footer';
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCog, faTachometerAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import Slider from "../HomeBannerSectionComp/Slider";
+import Slider from "../HomePageComp/Slider";
 import Gallery from '../GalleryComp/Gallery';
 import Catering from "../CateringCom/Catering";
 import Order from '../OrderPageComp/Order';
-import Location from "../LocationCom/Location";
 import LinearProgress from '@mui/material/LinearProgress';
+import BannerSection1 from '../HomePageComp/BannerSection1';
+import BannerSection2 from '../HomePageComp/BannerSection2';
+import BannerSection3 from '../HomePageComp/BannerSection3';
+import BannerSectionCTA from '../HomePageComp/BannerSectionCTA';
+import OurStory from '../HomePageComp/OurStory';
 
 const pages = ["HOME", "ORDER ONLINE", "BANQUETS", "MENU", "CATERING","GALLERY", "LOCATION"];
 const settings = [
@@ -36,9 +40,9 @@ const settings = [
 
 const storedId = localStorage.getItem("userId");
 
-// function MenuPage() {
-//   return <div>This is the Menu Page</div>;
-// }
+function MenuPage() {
+  return <div>This is the Menu Page</div>;
+}
 function HeaderBar(){
   return <div>This is the Home Page</div>;
 }
@@ -97,14 +101,14 @@ function Headerbar() {
   };
 
   useEffect(() => {
-    axios.get(`https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Users`)
+    axios.get(`https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Users/${storedId}`)
       .then((response) => {
         setUserData(response.data);
       })
       .finally(() => {
         setTimeout(() => {
           setLoading(false);
-          setDelayed(false); // Remove delay after 3 seconds
+          setDelayed(false);
         }, 3000);
       });
   }, []);
@@ -309,6 +313,11 @@ function Headerbar() {
         </Container>
       </AppBar>
       <Slider />
+      <BannerSection1/>
+      <BannerSection2/>
+      <BannerSection3/>
+      <OurStory/>
+      <BannerSectionCTA/>
       <ImagesMapping />
       <Footer />
 </>

@@ -4,7 +4,7 @@ import { Link } from "@mui/material";
 import { useNavigate, useParams  } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+ 
 function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ function LoginPage() {
     }
     return true;
   }
-
+ 
   function loginUser(event) {
     console.log(`Fetching data for userId: ${userId}`);
     event.preventDefault();
@@ -44,8 +44,9 @@ function LoginPage() {
       .then((data) => {
         console.log("result", data.id);
         let id = data.id;
-        localStorage.setItem('userId', id);
        
+        localStorage.setItem('userId', id);
+        console.log("here is the id ==>",id);
         localStorage.setItem("items", JSON.stringify({ email, password,id  }));
         toast.success("Login successful!", {
           position: "top-right",
@@ -59,15 +60,15 @@ function LoginPage() {
         setError(<span style={{color:'rgb(171,73,53)'}}>Invalid login credentials.</span>);
       });
   }
-
+ 
   function SignUp() {
     navigate("/register");
   }
-
+ 
   function ForGot() {
     navigate("/forgot");
   }
-
+ 
   return (
     <div className="back-color">
       <div className="container-fluid">
@@ -119,7 +120,7 @@ function LoginPage() {
                 title="show/hide(password)"
               ></span>
             </div>
-
+ 
             <div className="pass">
               <Link href="#" onClick={ForGot}>
                 Forgot password?
@@ -141,5 +142,5 @@ function LoginPage() {
     </div>
   );
 }
-
+ 
 export default LoginPage;

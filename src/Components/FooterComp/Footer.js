@@ -8,10 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 function Footer() {
   const [images, setImages] = useState([]);
-  const [logoImage, setLogoImage] = useState('');
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const [logoImage, setLogoImage] = useState('');
   useEffect(() => {
     // Fetching images from the API
     axios.get(FooterImage)
@@ -47,48 +46,54 @@ function Footer() {
   return (
     <Box className="kf-footer" sx={{ padding: '70px 0 0 0' }}>
       <Grid container spacing={3} className="container" style={{ background: 'black' }}>
-        
-		<Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Box className="kf-logo element-anim-1 scroll-animate animate__active animate__animated" data-animate="active" sx={{ visibility: 'visible' }}>
-            <a href="">
+            <a href="index.html">
               <img src={logoImage} alt="Footer Logo" style={{ maxWidth: '70%', width: 'auto', maxHeight: '100px' }} />
             </a>
           </Box>
         </Grid>
 
         <Grid item xs={12} sm={6} md={3}>
-          <Box className="kf-f-hours element-anim-1 scroll-animate animate__active animate__animated" data-animate="active" sx={{ visibility: 'visible' }}>
-            <Typography variant="h5">Business hours</Typography>
-            <ul>
-              <li>
-                Monday - Friday
-                <em>LUNCH: 11 AM - 3 PM</em>
-                <em>DINNER: 5 PM - 10 PM</em>
-                Saturday - Sunday: 11 AM - 10 PM
-              </li>
-            </ul>
-          </Box>
-        </Grid>
-
-        <Grid item xs={12} sm={6} md={3}>
-          <Box className="kf-f-contact element-anim-1 scroll-animate animate__active animate__animated" data-animate="active" sx={{ visibility: 'visible' }}>
-            <Typography variant="h5">Contact Us</Typography>
-            <ul>
+  <Box className="kf-f-hours element-anim-1 scroll-animate animate__active animate__animated" data-animate="active" sx={{ visibility: 'visible' }}>
+    <Typography variant="h5">Business hours</Typography>
+    <span>&nbsp;</span>
+    <ul>
       <li>
-        <em><FontAwesomeIcon icon={faLocationDot} /> Location :</em>
-        2215 US-1 SOUTH, North Brunswick Township, NJ 08902
+        <div>Monday - Friday</div>
+        <em>LUNCH: 11 AM - 3 PM</em>
+        <em>DINNER: 5 PM - 10 PM</em>
       </li>
       <li>
-        <em><FontAwesomeIcon icon={faPhone} /> Phone Number :</em>
-        (732) 398-9022
+        <div>Saturday - Sunday: 11 AM - 10 PM</div>
       </li>
     </ul>
-          </Box>
-        </Grid>
+  </Box>
+</Grid>
+
+<Grid item xs={12} sm={6} md={3}>
+  <Box className="kf-f-contact element-anim-1 scroll-animate animate__active animate__animated" data-animate="active" sx={{ visibility: 'visible' }}>
+    <Typography variant="h5">Contact Us</Typography>
+    <span>&nbsp;</span>
+    <ul>
+      <li>
+        <div><FontAwesomeIcon icon={faLocationDot} className='icon-color' /> <em>Location :</em></div>
+        <div>2215 US-1 SOUTH, North Brunswick Township, NJ 08902</div>
+      </li>
+      <span>&nbsp;</span>
+      <li>
+        <div><FontAwesomeIcon icon={faPhone} className='icon-color' /> <em>Phone Number :</em></div>
+        <div>(732) 398-9022</div>
+      </li>
+    </ul>
+  </Box>
+</Grid>
+
 
         <Grid item xs={12} sm={6} md={3}>
           <Box className="kf-f-gallery element-anim-1 scroll-animate animate__active animate__animated" data-animate="active" sx={{ visibility: 'visible' }}>
             <Typography variant="h5">Gallery</Typography>
+            <span>&nbsp;</span>
             <ul>
               {images.map((image, index) => (
                 <li key={index} onClick={() => handleOpen(image)}>

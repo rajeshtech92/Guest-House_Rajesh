@@ -6,6 +6,7 @@ import './Gallery.css';
 import { Grid, Typography, Box, Modal, Button } from "@mui/material";
 import LinearProgress from '@mui/material/LinearProgress';
 import logo from '../ImageCom/logo.png'; // Make sure to replace this with the correct path to your logo image
+import BannerSection2 from '../HomePageComp/BannerSection2';
 
 function Gallery() {
   const [contentData, setHeading] = useState('');
@@ -189,7 +190,7 @@ function Gallery() {
           </Grid>
 
           {/* Displaying images filtered by contentId 34, 35, 36 */}
-          <div className="image-grid">
+          {/* <div className="image-grid">
             {img.map((image, index) => (
               <div key={index} className="grid-image">
                 <img
@@ -202,7 +203,8 @@ function Gallery() {
                 </Typography>
               </div>
             ))}
-          </div>
+          </div> */}
+          <BannerSection2/>
           <Footer />
         </>
       )}

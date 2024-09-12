@@ -16,6 +16,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCog, faTachometerAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import './Headerbar.css';
 import logo from '../ImageCom/logo.png';
+
+import { Link } from '@mui/material';
+
 import axios from 'axios';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Headerbar from './Headerbar';
@@ -35,7 +38,7 @@ const settings = [
 ];
 
 const storedId = localStorage.getItem('userId');
-console.log(storedId); // Check the value
+
 function HeaderProfile() {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -85,7 +88,7 @@ function HeaderProfile() {
   };
 
   useEffect(() => {
-    axios.get(`https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Users`)
+    axios.get(`https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Users/${storedId}`)
       .then(response => {
         setUserData(response.data);
       });

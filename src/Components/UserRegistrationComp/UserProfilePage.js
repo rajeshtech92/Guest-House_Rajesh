@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import './UserProfilePage.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, TextField } from '@mui/material';
 import axios from 'axios';
+import profilePic from '../ImageCom/profile-pic.png';
 import HeaderProfile from '../HeaderComp/HeaderProfile';
 import Footer from '../FooterComp/Footer';
-
+ 
 function UserProfilePage() {
     const navigate = useNavigate();
-    // const { id } = useParams();
+    const { id } = useParams();
     const [open, setOpen] = useState(false);
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    
     const storedId = localStorage.getItem('userId');
-    localStorage.setItem('userId', storedId);
-
-    console.log("StoredId:", storedId);
-
+    console.log("Storeid", storedId);
+ 
     useEffect(() => {
-        axios.get(`https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Users`)
+        axios.get(`https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Users/${storedId}`)
             .then(response => {
                 setUserData(response.data);
+                console.log(response.data)
                 setLoading(false);
                 console.log(response.data);
             })
@@ -31,27 +32,27 @@ function UserProfilePage() {
                 setLoading(false);
             });
     }, [storedId]);
-
-    // function LogOut() {
-    //     navigate("/login");
-    // }
-
+ 
+    function LogOut() {
+        navigate("/login");
+    }
+ 
     const handleClickOpen = () => {
         setOpen(true);
     };
-
+ 
     const handleClose = () => {
         setOpen(false);
     };
-
+ 
     const handleSave = () => {
         // Perform save operation here if needed
         handleClose();
     };
-
+ 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error loading user data</div>;
-
+ 
     return (
         <div className='background-Color'>
             <HeaderProfile />
@@ -273,7 +274,7 @@ function UserProfilePage() {
                                 </div>
                             </div>
                            
-                            
+                           
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,10 @@ import MenuImage from './Components/MenuPageComp/MenuImage';
 import Catering from './Components/CateringCom/Catering';
 import Gallery from './Components/GalleryComp/Gallery';
 import Order from './Components/OrderPageComp/Order';
-import Location from './Components/LocationCom/Location';
+import Location from './Components/LocationComp/Location';
+import MenuOrder from './Components/OrderPageComp/MenuOrder';
+import Cart from './Components/OrderPageComp/Cart';
+import OrderSummary from './Components/OrderPageComp/OrderSummary';
 function App() {
   return (
     <Router>
@@ -21,14 +24,17 @@ function App() {
         <Route path="/register" element={<Registration />} />
         <Route path="/forgot" element={<ForgotPassword />} />
         <Route path="/changePassword" element={<ChangePassword />} />
-        <Route path="/userProfile" element={<UserProfilePage />} />
-        <Route path="//headerHome/*" element={<HeaderBar />} />
+        <Route path="/userProfile/*" element={<UserProfilePage />} />
+        <Route path="/headerHome/*" element={<HeaderBar />} />
         <Route path="/banquetPage/*" element={<Banquet />} />
         <Route path="/orderPage/*" element={<Order />} />
         <Route path="/menuPage/*" element={<MenuImage />} />
         <Route path="/cateringPage/*" element={<Catering />} />
         <Route path="/galleryPage/*" element={<Gallery />} />
         <Route path="/locationPage/*" element={<Location />} />
+        <Route path="/menuOrder" element={<MenuOrder />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/summary" element={<OrderSummary />} />
         {/* Add other routes here */}
       </Routes>
     </Router>

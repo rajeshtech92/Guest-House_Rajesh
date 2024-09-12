@@ -7,6 +7,7 @@ import './Catering.css';
 import Box from "@mui/material/Box";
 import LinearProgress from '@mui/material/LinearProgress';
 import logo from '../ImageCom/logo.png'; // Make sure to replace this with the correct path to your logo image
+import BannerSection2 from '../HomePageComp/BannerSection2';
 
 function Catering() {
   const [heading1, setHeading1] = useState("");
@@ -117,7 +118,7 @@ function Catering() {
               {activeButton === 2 && renderImage(partyImage)}
             </Grid>
             {/* Displaying images filtered by contentId 34, 35, 36 */}
-            <div className="image-grid">
+            {/* <div className="image-grid">
               {img.map((image, index) => (
                 <div key={index} className="grid-image">
                   <img
@@ -130,8 +131,10 @@ function Catering() {
                   </Typography>
                 </div>
               ))}
-            </div>
+            </div> */}
+        
           </Grid>
+          <BannerSection2/>
           <Footer />
         </>
       )}

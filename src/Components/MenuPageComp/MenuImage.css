@@ -1,37 +1,119 @@
-.menu-image-container{
-  background:  #121212;
-  padding-top: 1px;
-
+.section-kf-menu {
+  padding: 130px 0;
+  position: relative;
+  z-index: 2;
+  background-color: #090c0f;
+  margin-top: -6px;
 }
-.image-grid {
+.menu-bg{
+background:  #121212;
+}
+.kf-menu-container {
+  margin: 0 auto;
+  max-width: 1170px;
+}
+
+.align-center {
+  text-align: center !important;
+}
+.kf-filter {
+  margin: -20px 0 50px 0;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.Take-Out {
+  text-align: center;
+  margin: 10px 0 70px 0;
+  font-size: 42px;
+  font-family: "Oswald", sans-serif;
+  color: #fff;
+  font-weight: 400;
+}
+.gallery-heading {
+  font-size: 42px;
+  font-family: "Oswald", sans-serif;
+  color: #fff;
+  font-weight: 400;
+  text-align: center;
+}
+.kf-filter a.active {
+  color: #fff;
+  background: #b99272;
+}
+
+.kf-filter a {
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 15px 30px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 14px;
+  color: #9ea1a2;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  text-transform: uppercase;
+  background: #090c0f;
+  text-decoration: none;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-transition: all 0.7s cubic-bezier(0.3, 0, 0.3, 1);
+  transition: all 0.7s cubic-bezier(0.3, 0, 0.3, 1);
+  -webkit-transition: all 0.7s cubic-bezier(0.3, 0, 0.3, 1);
+  cursor: pointer;
+  outline: none;
+}
+
+.kf-menu-items {
+  padding: 35px 45px;
+  background-color: #090c0f;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 465px auto;
+}
+
+.kf-menu-items .row img {
+  vertical-align: middle;
+  /* border: 2px solid blueviolet; */
+  width: 1056px;
+  height: 2471px;
+  margin-left: 145px;
+}
+.TableHead-color{
+  font-weight: 600;
+}
+.search-container {
   display: flex;
-  flex-wrap: nowrap; /* Keep items in a single row */
-  overflow-x: auto; /* Enable horizontal scrolling */
-  background-color: rgb(0, 0, 0);
-}
-.grid-image img {
-  width: 100%; /* Ensure image scales within its container */
-  height: 100%; /* Maintain aspect ratio */
-
+  justify-content: flex-end; /* Align the input field to the right */
 }
 
-.grid-image h3 {
-  margin: 10px 0 5px 0; /* Margin for the heading */
+.custom-search-input {
+  width: 30%; /* Set width to 30% */
+}
+.custom-search-input .MuiOutlinedInput-root {
+  background-color: white;
+  color: black;
 }
 
-.grid-image p {
-  margin: 0; /* No margin for the paragraph */
+.custom-search-input .MuiOutlinedInput-input {
+  color: black; /* Text color */
 }
 
-  
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f8f8f8; /* Or any other background color you prefer */
-    padding: 10px 20px;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Ensure it stays on top of other content */
-  }
-  
+.custom-search-input .MuiInputLabel-root {
+  color: black; /* Label text color */
+}
+
+.custom-search-input .MuiOutlinedInput-notchedOutline {
+  border-color: black; /* Default border color */
+}
+
+.custom-search-input .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: black; /* Border color on hover */
+}
+
+.custom-search-input .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: black;; /* Border color when focused */
+}
