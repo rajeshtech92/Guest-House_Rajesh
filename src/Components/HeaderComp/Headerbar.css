@@ -1,7 +1,9 @@
 .container {
   margin: 0 auto;
 }
-
+.home-bg{
+  background:  #121212;
+}
 .btn-epic {
   position: relative;
   margin: auto;

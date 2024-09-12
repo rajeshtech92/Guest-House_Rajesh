@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './UserProfilePage.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, TextField } from '@mui/material';
 import axios from 'axios';
-import profilePic from '../ImageCom/profile-pic.png';
 import HeaderProfile from '../HeaderComp/HeaderProfile';
 import Footer from '../FooterComp/Footer';
 
 function UserProfilePage() {
     const navigate = useNavigate();
-    const { id } = useParams();
+    // const { id } = useParams();
     const [open, setOpen] = useState(false);
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const storedId = localStorage.getItem('userId');
-    console.log("Storeid", storedId);
+    localStorage.setItem('userId', storedId);
+
+    console.log("StoredId:", storedId);
 
     useEffect(() => {
-        axios.get(`https://localhost:44341/api/Users/${storedId}`)
+        axios.get(`https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Users`)
             .then(response => {
                 setUserData(response.data);
                 setLoading(false);
@@ -31,9 +32,9 @@ function UserProfilePage() {
             });
     }, [storedId]);
 
-    function LogOut() {
-        navigate("/login");
-    }
+    // function LogOut() {
+    //     navigate("/login");
+    // }
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -64,8 +65,8 @@ function UserProfilePage() {
                     </nav>
                     <div className="row gutters-sm">
                         <div className="col-md-4 mb-3">
-                            <div className="card">
-                                <div className="card-body">
+                            <div className="cards">
+                                <div className="cards-body">
                                     <div className="d-flex flex-column align-items-center text-center">
                                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="150" />
                                         <div className="mt-3">
@@ -75,7 +76,7 @@ function UserProfilePage() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="card mt-3">
+                            <div className="cards mt-3">
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                         <h6 className="mb-0">
@@ -125,8 +126,8 @@ function UserProfilePage() {
                             </div>
                         </div>
                         <div className="col-md-8">
-                            <div className="card mb-3">
-                                <div className="card-body">
+                            <div className="cards mb-3">
+                                <div className="cards-body">
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <h6 className="mb-0">Full Name</h6>
@@ -217,8 +218,8 @@ function UserProfilePage() {
                             </div>
                             <div className="row gutters-sm">
                                 <div className="col-sm-6 mb-3">
-                                    <div className="card h-100">
-                                        <div className="card-body">
+                                    <div className="cards h-100">
+                                        <div className="cards-body">
                                             <h6 className="d-flex align-items-center mb-3"><i className="material-icons text-info mr-2">assignment</i>-Project Status One</h6>
                                             <small>Web Design</small>
                                             <div className="progress mb-3" style={{ height: '5px' }}>
@@ -244,8 +245,8 @@ function UserProfilePage() {
                                     </div>
                                 </div>
                                 <div className="col-sm-6 mb-3">
-                                    <div className="card h-100">
-                                        <div className="card-body">
+                                    <div className="cards h-100">
+                                        <div className="cards-body">
                                             <h6 className="d-flex align-items-center mb-3"><i className="material-icons text-info mr-2">assignment</i>-Project Status Two</h6>
                                             <small>Web Design</small>
                                             <div className="progress mb-3" style={{ height: '5px' }}>

@@ -1,0 +1,125 @@
+.order-bg{
+    background:  #121212;
+}
+.navigation-grid {
+    background: #121212;
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+    color: #fff;
+}
+
+.nav-item:hover {
+    cursor: pointer;
+    color: #c00;
+}
+.images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 4rem;
+}
+
+.grids {
+  text-align: center;
+}
+
+.grids img {
+  max-width: 70%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.grids h3 {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.grids p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Order.css */
+.heading {
+    background: #ffeeee;
+    color: #c00;
+    text-align: center;
+    font-weight: 700;
+    margin: -2rem auto;
+    max-width: 40em;
+    padding: .8em;
+    border: .125rem solid #a00;
+    -moz-border-radius: .625rem;
+    -webkit-border-radius: .625rem;
+    border-radius: .625rem;
+    padding-left: 210px;
+    padding-right: 210px;
+    padding-top: 0px;
+  }
+  .StartOrder{
+    color: #ed1c24;
+    border-bottom: 1px solid #E3E6E8;
+    display: table;
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -.125rem;
+    margin: 0 auto 1rem;
+    padding-top: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+    text-shadow: none;
+    text-align: center;
+    
+  }
+  @import 'react-datepicker/dist/react-datepicker.css';
+  /* FutureDateTimeCard.css */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 300px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.datepicker-container {
+  margin: 20px 0;
+}
+
+.future-date-time {
+  margin-top: 20px;
+}
+
+.card-date,
+.card-time {
+  font-size: 1.25rem;
+  margin: 5px 0;
+}
+.greens {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.buttons {
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding for the button */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor on hover */
+  font-weight: bold;
+}
+.buttons:hover {
+  background-color: #45a049; /* Darker green on hover */
+}

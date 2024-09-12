@@ -11,24 +11,22 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import "./Headerbar.css";
-import logo from "../ImageCom/logo.png";
-import Locationbar from "../HeaderComp/Locationbar";
-import { Link } from "@mui/material";
-import Slider from "../SliderComp/Slider";
-import Bar from "../Bar";
+import { Link as RouterLink } from "react-router-dom"; // Updated to use RouterLink
+import { Route, Routes, useNavigate } from "react-router-dom";
+import logo from '../ImageCom/logo.png';
+import ImagesMapping from '../HomeBannerSectionComp/ImagesMapping';
 import Footer from '../FooterComp/Footer';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faCog,
-  faTachometerAlt,
-  faSignOutAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUser, faCog, faTachometerAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import Slider from "../HomeBannerSectionComp/Slider";
+import Gallery from '../GalleryComp/Gallery';
+import Catering from "../CateringCom/Catering";
+import Order from '../OrderPageComp/Order';
+import Location from "../LocationCom/Location";
+import LinearProgress from '@mui/material/LinearProgress';
 
-const pages = ["HOME", "ORDER ONLINE", "MENU", "CATERING", "LOCATION"];
+const pages = ["HOME", "ORDER ONLINE", "BANQUETS", "MENU", "CATERING","GALLERY", "LOCATION"];
 const settings = [
   { name: "Profile", icon: faUser },
   { name: "Account", icon: faCog },
@@ -38,12 +36,22 @@ const settings = [
 
 const storedId = localStorage.getItem("userId");
 
+// function MenuPage() {
+//   return <div>This is the Menu Page</div>;
+// }
+function HeaderBar(){
+  return <div>This is the Home Page</div>;
+}
+function Banquet(){
+  return <div>This is the Home Page</div>;
+}
 function Headerbar() {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [userData, setUserData] = useState(null);
-
+  const [loading, setLoading] = useState(true); // New loading state
+  const [delayed, setDelayed] = useState(true); // New state for delay
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -52,8 +60,27 @@ function Headerbar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
+    if (page === "MENU") {
+      navigate("/menuPage");
+    } else if (page === "HOME") {
+      navigate("/headerHome");
+    } 
+    else if (page === "ORDER ONLINE") {
+      navigate("/orderPage"); // Add a route for ORDER ONLINE
+    }
+    else if (page === "BANQUETS") {
+      navigate("/banquetPage"); 
+    } else if (page === "CATERING") {
+      navigate("/cateringPage"); // Add a route for CATERING
+    }
+    else if (page === "GALLERY") {
+      navigate("/galleryPage");
+    }
+    else if (page === "LOCATION") {
+      navigate("/locationPage"); // Add a route for LOCATION
+    }
   };
 
   const handleCloseUserMenu = () => {
@@ -70,16 +97,29 @@ function Headerbar() {
   };
 
   useEffect(() => {
-    axios
-      .get(`https://localhost:44341/api/Users/${storedId}`)
+    axios.get(`https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Users`)
       .then((response) => {
         setUserData(response.data);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false);
+          setDelayed(false); // Remove delay after 3 seconds
+        }, 3000);
       });
   }, []);
 
   return (
-    <div>
-      {/* <Locationbar /> */}
+    <div className="home-bg">
+     {loading || delayed ? (
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <img src={logo} alt="Logo" style={{ marginBottom: '10px', width: '110px', height: '120px' }} /> {/* Display the logo */}
+           <Box sx={{ width: '110px'}}>
+      <LinearProgress color="success" style={{height:'1px'}}/>
+    </Box>
+        </div>
+      ) : (
+        <>
       <AppBar
         position="static"
         sx={{
@@ -148,7 +188,7 @@ function Headerbar() {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
@@ -170,11 +210,11 @@ function Headerbar() {
                 textDecoration: "none",
               }}
             >
-              <img
+              {/* <img
                 src={logo}
                 alt="Logo"
                 style={{ height: "40px", width: "auto" }}
-              />
+              /> */}
             </Typography>
             <Box
               sx={{
@@ -186,7 +226,7 @@ function Headerbar() {
               {pages.map((page) => (
                 <Button
                   key={page}
-                  onClick={handleCloseNavMenu}
+                  onClick={() => handleCloseNavMenu(page)}
                   sx={{
                     my: 2,
                     color: "white",
@@ -206,18 +246,16 @@ function Headerbar() {
                 </Button>
               ))}
             </Box>
-            <Link
-              to=""
-              target=""
-              rel="noopener noreferrer"
+            <RouterLink
+              to="/orderPage" // Update to your route
               className="btn-epic"
-              style={{ width: "10%" }}
+              style={{ width: "12%" }}
             >
               <div>
                 <span>ORDER NOW</span>
                 <span>ORDER NOW</span>
               </div>
-            </Link>
+            </RouterLink>
             <Box sx={{ flexGrow: 0, ml: "20px" }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -270,10 +308,24 @@ function Headerbar() {
           </Toolbar>
         </Container>
       </AppBar>
-      {/* <UserProfilePage/> */}
       <Slider />
-      <Bar />
+      <ImagesMapping />
       <Footer />
+</>
+      )}
+      {/* Define the Routes for your application */}
+      <Routes>
+      <Route path="/headerHome" element={<HeaderBar />} />
+        <Route path="/menuPage" element={<menuPage />} />
+        <Route path="/banquetPage" element={<Banquet />} />
+        <Route path="/orderPage" element={<Order />} />
+        <Route path="/cateringPage" element={Catering} />
+        <Route path="/galleryPage" element={<Gallery />} />
+        <Route path="/locationPage" element={Location} />
+        {/* Add other routes here */}
+      </Routes>
+
+      
     </div>
   );
 }

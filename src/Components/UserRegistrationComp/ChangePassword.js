@@ -29,7 +29,7 @@ function ChangePassword() {
       return;
     }
 
-    fetch("https://localhost:44341/api/Email/verify-otp-reset-password", {
+    fetch("https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Email/verify-otp-reset-password", {
       method: "POST",
       headers: {
         accept: "application/json",

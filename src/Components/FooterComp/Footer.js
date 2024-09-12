@@ -4,9 +4,11 @@ import axios from 'axios';
 import logo from '../ImageCom/logo.png';
 import './Footer.css';
 import { FooterImage } from '../ApiStore/Api';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 function Footer() {
   const [images, setImages] = useState([]);
+  const [logoImage, setLogoImage] = useState('');
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -14,8 +16,18 @@ function Footer() {
     // Fetching images from the API
     axios.get(FooterImage)
       .then(response => {
-        // Assuming response.data is an array of image objects
-        setImages(response.data);
+        // Filtering images based on contentId (e.g., contentId 17, 18, 19)
+        const filteredImages = response.data.filter(image => 
+          image.contentId === 20 || image.contentId === 21 || image.contentId === 22
+        );
+        // Filtering the logo image based on contentId
+        const logo = response.data.find(image => image.contentId === 73);
+        setImages(filteredImages);
+        if (logo) {
+          setLogoImage(`data:image/jpeg;base64,${logo.contentData}`);
+        }
+        setImages(filteredImages);
+        console.log(response);
       })
       .catch(error => {
         console.error("There was an error fetching the images!", error);
@@ -35,10 +47,11 @@ function Footer() {
   return (
     <Box className="kf-footer" sx={{ padding: '70px 0 0 0' }}>
       <Grid container spacing={3} className="container" style={{ background: 'black' }}>
-        <Grid item xs={12} sm={6} md={3}>
+        
+		<Grid item xs={12} sm={6} md={3}>
           <Box className="kf-logo element-anim-1 scroll-animate animate__active animate__animated" data-animate="active" sx={{ visibility: 'visible' }}>
-            <a href="index.html">
-              <img src={logo} alt="Footer Logo" style={{ maxWidth: '70%', width: 'auto', maxHeight: '100px' }} />
+            <a href="">
+              <img src={logoImage} alt="Footer Logo" style={{ maxWidth: '70%', width: 'auto', maxHeight: '100px' }} />
             </a>
           </Box>
         </Grid>
@@ -61,17 +74,15 @@ function Footer() {
           <Box className="kf-f-contact element-anim-1 scroll-animate animate__active animate__animated" data-animate="active" sx={{ visibility: 'visible' }}>
             <Typography variant="h5">Contact Us</Typography>
             <ul>
-              <li>
-                <i className="las la-map-marker" style={{ fontSize: '40px', color: 'red' }}></i>
-                <em>Location :</em>
-                2215 US-1 SOUTH, North Brunswick Township, NJ 08902
-              </li>
-              <li>
-                <i className="las la-phone" style={{ fontSize: '40px', color: 'red' }}></i>
-                <em>Phone Number :</em>
-                (732) 398-9022
-              </li>
-            </ul>
+      <li>
+        <em><FontAwesomeIcon icon={faLocationDot} /> Location :</em>
+        2215 US-1 SOUTH, North Brunswick Township, NJ 08902
+      </li>
+      <li>
+        <em><FontAwesomeIcon icon={faPhone} /> Phone Number :</em>
+        (732) 398-9022
+      </li>
+    </ul>
           </Box>
         </Grid>
 
@@ -83,7 +94,7 @@ function Footer() {
                 <li key={index} onClick={() => handleOpen(image)}>
                   <img
                     className="d-block w-100"
-                    style={{ objectFit: 'cover', height: '50px', width: '30px', cursor: 'pointer' }}
+                    style={{ objectFit: 'cover', height: '60px', width: '30px', cursor: 'pointer' }}
                     src={`data:image/jpeg;base64,${image.contentData}`} // Assuming base64 data
                     alt={image.title}
                   />
@@ -110,12 +121,12 @@ function Footer() {
       </Grid>
 
       <Modal open={open} onClose={handleClose} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Box sx={{ outline: 'none' }}>
+        <Box sx={{ outline: 'none', height: '500px', width: '600px' }}>
           {selectedImage && (
             <img
               src={`data:image/jpeg;base64,${selectedImage.contentData}`}
               alt={selectedImage.title}
-              style={{ maxHeight: '90vh', maxWidth: '90vw' }}
+              style={{ height: '100%', width: '100%', objectFit: 'cover' }}
             />
           )}
         </Box>

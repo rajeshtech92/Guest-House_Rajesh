@@ -41,9 +41,9 @@ function Registration() {
         if (validateForm()) {
             setIsSubmitting(true);
             try {
-                const response = await axios.post('https://localhost:44341/api/Users/register', formValues);
+                const response = await axios.post('https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Users/register', formValues);
                 setFormValues(response.data)
-                if(response.status == 201){
+                if(response.status === 201){
                     toast.success('Registration successful!..');
                 }
                 setTimeout(() => {

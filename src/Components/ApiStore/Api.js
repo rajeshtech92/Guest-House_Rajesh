@@ -1,1 +1,1 @@
-export var FooterImage = 'https://localhost:44341/api/Contents'
+export var FooterImage = 'https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Contents';

@@ -26,7 +26,7 @@ function ForgotPassword() {
       return;
     }
     console.log(email);
-    fetch("https://localhost:44341/api/Email/send-otp", {
+    fetch("https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Email/send-otp", {
       method: "POST",
       headers: {
         accept: "application/json",

@@ -27,7 +27,7 @@ function LoginPage() {
       return;
     }
     console.log(email, password);
-    fetch(`https://localhost:44341/api/Auth/login/`, {
+    fetch(`https://guesthouse-api-dje8gvcwayfdfmbr.eastus-01.azurewebsites.net/api/Auth/login`, {
       method: "POST",
       headers: {
         accept: "application/json",
